@@ -1,21 +1,15 @@
 const express = require('express');
-const logger = require('./logger/index');
-const db = require('./database/models/index');
-
-db.sequelize.sync({ force: false }).then(() => {
-  console.log('#droped the database and and re-synced.');
-});
-
-
+const logger = require('./logger/index')('index.js');
+require('./database/models/index');
 
 const app = express();
 
 app.get('/', async (req, res) => {
-    const data = await db.AppMenuMasterModel.findAll();
+    // const data = await db.AppMenuMasterModel.findAll();
     res
       .status(200)
       .json({
-        message: data
+        message: 'Backend Is working'
       });
 })
 

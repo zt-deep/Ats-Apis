@@ -1,11 +1,13 @@
+const FILE_NAME = 'Index.js';
+const compression = require('compression');
 const express = require('express');
-const logger = require('./logger/index')('index.js');
-require('./database/models/index');
+const logger = require('./logger/index')(FILE_NAME);
+require('./database/index');
 
 const app = express();
+app.use(compression());
 
 app.get('/', async (req, res) => {
-    // const data = await db.AppMenuMasterModel.findAll();
     res
       .status(200)
       .json({

@@ -5,7 +5,7 @@ const { database, dialect, host, password, username } =
 const accountsDb = new Sequelize(database, username, password, {
   host,
   dialect,
-  operatorsAliases: false,
+  operatorsAliases: 0,
   logging:false
 });
 

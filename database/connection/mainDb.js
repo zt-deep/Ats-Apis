@@ -4,7 +4,7 @@ const { database, dialect, host, password, username } = require('../../config/co
 const mainDb = new Sequelize(database, username, password, {
     host,
     dialect, 
-    operatorsAliases: false,
+    operatorsAliases: 0,
     logging: false
 });
 

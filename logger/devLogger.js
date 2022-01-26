@@ -1,9 +1,8 @@
 const { createLogger, format, transports } = require('winston');
-const { getCurrentFileName } = require('../lib/Logger');
 
 const { printf, timestamp } = format;
 
-const devLogger = () => {
+const devLogger = (fileName) => {
   const loggerFormat = printf(
     ({ level, message, logtimestamp, stack }) =>
       `${logtimestamp} [${level}]: ${stack || message}`
@@ -17,7 +16,7 @@ const devLogger = () => {
       format.errors({ stack: true }),
       loggerFormat
     ),
-    defaultMeta: { fileName: getCurrentFileName(__filename) },
+    defaultMeta: { fileName },
     transports: [new transports.Console()],
   });
 }

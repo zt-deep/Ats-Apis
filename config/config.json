@@ -1,0 +1,50 @@
+{
+  "development": {
+    "mainDb" : {
+      "username": "root",
+      "password": "ABC@abc123",
+      "database": "demo_db_server",
+      "host": "127.0.0.1",
+      "dialect": "mysql"
+    },
+    "accounts" : {
+      "username": "root",
+      "password": "ABC@abc123",
+      "database": "accounts_demo",
+      "host": "127.0.0.1",
+      "dialect": "mysql"
+    }
+  },
+  "test": {
+    "mainDb" : {
+      "username": "root",
+      "password": null,
+      "database": "database_development",
+      "host": "127.0.0.1",
+      "dialect": "mysql"
+    },
+    "accounts" : {
+      "username": "root",
+      "password": null,
+      "database": "database_development",
+      "host": "127.0.0.1",
+      "dialect": "mysql"
+    }
+  },
+  "production": {
+    "mainDb" : {
+      "username": "root",
+      "password": null,
+      "database": "database_development",
+      "host": "127.0.0.1",
+      "dialect": "mysql"
+    },
+    "accounts" : {
+      "username": "root",
+      "password": null,
+      "database": "database_development",
+      "host": "127.0.0.1",
+      "dialect": "mysql"
+    }
+  }
+}

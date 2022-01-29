@@ -8,7 +8,9 @@ const mainDbModels = {};
 accountModels.sequelize = accountsDbSequilizeInstance;
 mainDbModels.sequelize = mainDbSequilizeInstance;
 
-// Syncing accounts database tables with sequelize
+/**
+ * Syncing ACCOUNTS database tables with sequelize
+ */
 accountModels.AppMenuMasterModel = 
   require('./models/accountsDb/AppMenuMaster')(accountsDbSequilizeInstance);
 accountModels.OrgAppMenuMappingModel = 
@@ -18,9 +20,21 @@ accountModels.OrgUserAppMenuMapping =
 accountModels.OrgRoleMenuMapping =
   require('./models/accountsDb/OrgRoleMenuMapping')(accountsDbSequilizeInstance);
 
-// Syncing main database tables with sequelize
-mainDbModels.AtsMenuActivity = 
+/**
+ * Syncing MAIN database tables with sequelize
+ */
+mainDbModels.AtsMenuActivityModel = 
   require('./models/mainDb/AtsMenuActivity')(mainDbSequilizeInstance);
+mainDbModels.KmEmployeeDetailsModel = 
+  require('./models/mainDb/KmEmployeeDetails')(mainDbSequilizeInstance);
+mainDbModels.KmEmployeePersonalDetailsModel =
+  require('./models/mainDb/KmEmployeePersonalDetails')(mainDbSequilizeInstance);
+mainDbModels.KmOrgDetailsModel = require('./models/mainDb/KmOrgDetails')(
+  mainDbSequilizeInstance
+);
+mainDbModels.KmUserDetailsModel = require('./models/mainDb/KmUserDetails')(
+  mainDbSequilizeInstance
+);
 
 
 accountModels.sequelize.sync({ force: false }).then(() => {

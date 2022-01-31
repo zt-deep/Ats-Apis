@@ -185,5 +185,5 @@ module.exports = (sequelize) =>
       underscore: true,
       tablename: 'km_employee_details',
       freezeTableName: true,
-    }
+    },
   );

@@ -12,6 +12,7 @@ module.exports = (sequelize) =>
       },
       EMPLOYEE_ID: {
         type: Sequelize.INTEGER(11).UNSIGNED,
+        references: { model: 'km_employee_details', key: 'EMPLOYEE_ID' },
       },
       EMPLOYEE_STATUS: {
         type: Sequelize.INTEGER(2),

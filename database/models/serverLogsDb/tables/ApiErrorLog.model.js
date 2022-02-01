@@ -40,7 +40,8 @@ module.exports = (sequelize) =>
       },
     },
     {
-      timestamps: false,
+      createdAt: 'captured_on',
+      updatedAt: false,
       underscore: true,
       tablename: 'api_error_log',
       freezeTableName: true,

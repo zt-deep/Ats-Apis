@@ -1,48 +1,30 @@
-const FILE_NAME = 'modelIndex.js';
+const FILE_NAME = 'mainModelIndex.js';
 const logger = require('../logger')(FILE_NAME);
-const accountsDbSequilizeInstance = require('./connection/accountsDb');
-const mainDbSequilizeInstance = require('./connection/mainDb');
+const {
+  mainDbSequelizeInstance: mainDbModels,
+} = require('./models/mainDb/index');
 
-const accountModels = {}; 
-const mainDbModels = {};
-accountModels.sequelize = accountsDbSequilizeInstance;
-mainDbModels.sequelize = mainDbSequilizeInstance;
+// Importing associations 
+// require('./models/mainDb/associations');
 
-/**
- * Syncing ACCOUNTS database tables with sequelize
- */
-accountModels.AppMenuMasterModel = 
-  require('./models/accountsDb/AppMenuMaster')(accountsDbSequilizeInstance);
-accountModels.OrgAppMenuMappingModel = 
-  require('./models/accountsDb/OrgAppMenuMapping')(accountsDbSequilizeInstance);
-accountModels.OrgUserAppMenuMapping = 
-  require('./models/accountsDb/OrgUserAppMenuMapping')(accountsDbSequilizeInstance);
-accountModels.OrgRoleMenuMapping =
-  require('./models/accountsDb/OrgRoleMenuMapping')(accountsDbSequilizeInstance);
+const {
+  accountsDbSequilizeInstance: accountsDbModels
+} = require('./models/accountsDb/index');
 
-/**
- * Syncing MAIN database tables with sequelize
- */
-mainDbModels.AtsMenuActivityModel = 
-  require('./models/mainDb/AtsMenuActivity')(mainDbSequilizeInstance);
-mainDbModels.KmEmployeeDetailsModel = 
-  require('./models/mainDb/KmEmployeeDetails')(mainDbSequilizeInstance);
-mainDbModels.KmEmployeePersonalDetailsModel =
-  require('./models/mainDb/KmEmployeePersonalDetails')(mainDbSequilizeInstance);
-mainDbModels.KmOrgDetailsModel = require('./models/mainDb/KmOrgDetails')(
-  mainDbSequilizeInstance
-);
-mainDbModels.KmUserDetailsModel = require('./models/mainDb/KmUserDetails')(
-  mainDbSequilizeInstance
-);
+const {
+  serverLogsDbSequelizeInstance: serverLogsDbModel
+} = require('./models/serverLogsDb/index');
 
-
-accountModels.sequelize.sync({ force: false }).then(() => {
-  logger.info('Accounts database is connected');
+accountsDbModels.sync({ force: false }).then(() => {
+  logger.info('Accounts database is connected.');
 });
 
-mainDbModels.sequelize.sync({ force: false }).then(() => {
-  logger.info('Main database is connected');
+mainDbModels.sync({ force: false }).then(() => {
+  logger.info('Main database is connected.');
 });
 
-module.exports = {accountModels, mainDbModels};
+serverLogsDbModel.sync({ force: false }).then(() => {
+  logger.info('Server Logs database is connected.');
+});
+
+module.exports = { accountsDbModels, mainDbModels };

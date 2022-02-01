@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 
-module.exports = (sequelize) =>
-  sequelize.define(
+module.exports = (sequelize) => {
+  const kmEmployeePersonalDetails = sequelize.define(
     'km_employeee_personal_details',
     {
       PERSNLID: {
@@ -187,3 +187,15 @@ module.exports = (sequelize) =>
       freezeTableName: true,
     }
   );
+
+  kmEmployeePersonalDetails.associate = (models) =>
+    kmEmployeePersonalDetails.belongsTo(models.kmEmployeeDetailsModel, {
+      foreignKey: {
+        name: 'EMPLOYEE_ID',
+        allowNull: false,
+      },
+    });
+  
+  return kmEmployeePersonalDetails;
+
+}

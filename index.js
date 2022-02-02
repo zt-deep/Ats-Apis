@@ -26,5 +26,5 @@ app.get('/', async (req, res) => {
 app.use(errorResponse);
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
-    logger.info(`Zimyo ATS is live on ${PORT}`);
+    logger.info(`Zimyo ATS is live on port ${PORT}`);
 })

@@ -35,13 +35,13 @@ module.exports = (sequelize) =>
       updated_on: {
         type: Sequelize.DATE,
       },
-      auth_updated_on: {
+      auth_updated_at: {
         type: Sequelize.DATE,
       },
     },
     {
       createdAt: 'updated_on',
-      updatedAt: 'auth_updated_on',
+      updatedAt: 'auth_updated_at',
       underscore: true,
       tablename: 'sessions',
       freezeTableName: true,

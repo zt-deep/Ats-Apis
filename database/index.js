@@ -1,4 +1,4 @@
-const FILE_NAME = 'mainModelIndex.js';
+const FILE_NAME = 'databaseIndex.js';
 const logger = require('../logger')(FILE_NAME);
 const {
   mainDbSequelizeInstance: mainDbModels,

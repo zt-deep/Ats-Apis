@@ -8,6 +8,7 @@ module.exports = (sequelize) =>
         type: Sequelize.INTEGER(10).UNSIGNED,
         allowNull: false,
         primaryKey: true,
+        autoIncrement: true,
       },
       service: {
         type: Sequelize.STRING(100),

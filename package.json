@@ -27,6 +27,7 @@
     "mysql2": "^2.3.3",
     "sequelize": "^7.0.0-alpha.2",
     "sha1": "^1.1.1",
+    "useragent": "^2.3.0",
     "winston": "^3.3.3"
   },
   "devDependencies": {

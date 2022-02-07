@@ -9,7 +9,7 @@ const {
   AppMasterModel,
   AppMenuMasterModel
 } = require('../../../database/models/accountsDb/index');
-const { getHighestRole } = require('../../../lib/common/Util');
+const { getHighestRole, promiseErrorCatchFunction } = require('../../../lib/common/Util');
 
 // Fetch org menus
 const fetchOrgMenus = (orgId) =>
@@ -37,7 +37,7 @@ const fetchOrgRoleMenus = (orgId) =>
     group: 'ROLE_ID',
     order: [['ID', 'ASC']],
     raw: true,
-  });
+  }).catch(promiseErrorCatchFunction);
 
 // Fetch user based menus
 const fetchOrgUserMenus = (orgId, userId) =>
@@ -48,18 +48,18 @@ const fetchOrgUserMenus = (orgId, userId) =>
       user_id: userId,
     },
     raw: true,
-  });
+  }).catch(promiseErrorCatchFunction);
 
   // Fetching names of app menu
-  const fetchMenuNames = () => 
+  const fetchMenuNames = () =>
     AppMenuMasterModel.findAll({
-      attributes: ['id','name','parent_id'],
+      attributes: ['id', 'name', 'parent_id'],
       where: {
         app_id: ZIMYO_ATS_APP_ID,
-        status: 'Active'
+        status: 'Active',
       },
-      raw: true
-    })
+      raw: true,
+    }).catch(promiseErrorCatchFunction);
 
 /**
  * This function will return all the menus and activites assigned to the user
@@ -67,7 +67,7 @@ const fetchOrgUserMenus = (orgId, userId) =>
  * @param {*} auth authorization data
  * @param {*} callback
  */
-const getUserMenuAndActivities = async (data, auth, callback) => {
+const getUserMenuAndActivities = async (auth, callback) => {
   try {
     const { org_id: orgId, user_id: userId, role_ids: roleIds } = auth;
 

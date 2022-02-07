@@ -4,9 +4,10 @@ const compression = require('compression');
 require('dotenv').config();
 const express = require('express');
 const logger = require('./logger/index')(FILE_NAME);
-const { errorResponse } = require('./lib/common/Util')
+const { errorResponse } = require('./lib/common/Util');
 
 require('./database/models/mainDb/associations');
+require('./database/models/accountsDb/associations');
 require('./database/index');
 
 

@@ -7,6 +7,7 @@ const {
   OrgUserAppMenuMappingModel,
   OrgRoleMenuMappingModel,
   AppMasterModel,
+  AppMenuMasterModel
 } = require('../../../database/models/accountsDb/index');
 const { getHighestRole } = require('../../../lib/common/Util');
 
@@ -49,6 +50,17 @@ const fetchOrgUserMenus = (orgId, userId) =>
     raw: true,
   });
 
+  // Fetching names of app menu
+  const fetchMenuNames = () => 
+    AppMenuMasterModel.findAll({
+      attributes: ['id','name','parent_id'],
+      where: {
+        app_id: ZIMYO_ATS_APP_ID,
+        status: 'Active'
+      },
+      raw: true
+    })
+
 /**
  * This function will return all the menus and activites assigned to the user
  * @param {*} data body data
@@ -64,6 +76,7 @@ const getUserMenuAndActivities = async (data, auth, callback) => {
     let menuIds = [];
     let activity = [];
 
+    menuPromiseArray.push(fetchMenuNames());
     if (!isAdmin) {
       menuPromiseArray.push(fetchOrgMenus(orgId));
     } else {
@@ -71,15 +84,16 @@ const getUserMenuAndActivities = async (data, auth, callback) => {
       menuPromiseArray.push(fetchOrgRoleMenus(orgId));
       menuPromiseArray.push(fetchOrgUserMenus(orgId, userId));
     }
+    
 
-    const [orgMenusData, orgRoleMenusData, orgUserMenusData] =
+    const [menuNamesData, orgMenusData, orgRoleMenusData, orgUserMenusData] =
       await Promise.all(menuPromiseArray);
     // const
     if (!orgMenusData || orgMenusData.app_menu.length === 0) {
       logger.warn(`Menus for orgID ${orgId} does not exist for ATS`);
       return [];
     }
-    if (!isAdmin) {
+    if (isAdmin) {
       menuIds = orgMenusData.app_menu;
     } else {
       const orgMenus = orgMenusData.app_menu;
@@ -96,6 +110,7 @@ const getUserMenuAndActivities = async (data, auth, callback) => {
         const roleRow = orgRoleMenusData.find(
           (roleData) => roleData.ROLE_ID === highestRole
         );
+        if(userMenus.length === 0)
         userMenus =
           roleRow?.MENU_ID?.split(',').map((id) => _.toNumber(id)) || [];
         if(activity.length === 0)
@@ -106,8 +121,20 @@ const getUserMenuAndActivities = async (data, auth, callback) => {
       }
       menuIds = _.intersection(userMenus, orgMenus);
     }
+    const menuData = [];
+    const subMenuData = [];
+    menuIds.map(id => {
+      if(id === 0) return 0;
+      const menuInfo = menuNamesData.find(menuId => menuId.id === id);
+      if(menuInfo.parent_id){
+        subMenuData.push({...menuInfo, name: _.capitalize(menuInfo.name)});
+      }else{
+        menuData.push({ ...menuInfo, name: _.capitalize(menuInfo.name) });
+      }
+      return 0;
+    });
     
-    return callback(false, { menu: menuIds, activity });
+    return callback(false, { menu: menuData, subMenu: subMenuData, activity });
   } catch (error) {
     logger.error(error);
     return callback(error);

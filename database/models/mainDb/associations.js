@@ -2,7 +2,10 @@ const {
     KmEmployeeDetailsModel, 
     KmEmployeePersonalDetailsModel, 
     KmUserDetailsModel,
-    KmOrgDetailsModel
+    KmOrgDetailsModel,
+    AtsJobModel,
+    AtsJobMappingModel,
+    AtsHiringTeamModel
 } = require('./index');
 
 KmEmployeeDetailsModel.hasOne(KmEmployeePersonalDetailsModel, {
@@ -29,3 +32,31 @@ KmUserDetailsModel.belongsTo(KmOrgDetailsModel, {
   foreignKey: 'COMPANY_ID',
   targetKey: 'ORG_ID',
 });
+
+// oneToMany
+AtsJobModel.hasMany(AtsJobMappingModel, {
+  foreignKey: {
+    name: 'JOB_ID',
+  },
+});
+
+// many To One
+AtsJobMappingModel.belongsTo(AtsJobModel, {
+  foreignKey: 'JOB_ID',
+  targetKey: 'JOB_ID',
+});
+
+// many To One
+AtsHiringTeamModel.belongsTo(AtsJobModel, {
+  foreignKey: 'JOB_ID',
+  targetKey: 'JOB_ID',
+});
+
+// oneToMany
+AtsJobModel.hasMany(AtsHiringTeamModel, {
+  foreignKey: {
+    name: 'JOB_ID',
+  },
+});
+
+

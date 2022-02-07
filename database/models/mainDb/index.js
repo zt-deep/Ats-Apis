@@ -19,7 +19,19 @@ const KmUserDetailsModel = require('./tables/KmUserDetails.model')(
   mainDbSequelizeInstance
 );
 
-const AtsRoleDataVisibility = require('./tables/AtsMenuActivity.model')(
+const AtsRoleDataVisibilityModel = require('./tables/AtsMenuActivity.model')(
+  mainDbSequelizeInstance
+);
+
+const AtsJobModel = require('./tables/AtsJob.model')(
+  mainDbSequelizeInstance
+);
+
+const AtsJobMappingModel = require('./tables/AtsJobMapping.model')(
+  mainDbSequelizeInstance
+);
+
+const AtsHiringTeamModel = require('./tables/AtsHiringTeam.model')(
   mainDbSequelizeInstance
 );
 
@@ -30,5 +42,8 @@ module.exports = {
   KmEmployeePersonalDetailsModel,
   KmOrgDetailsModel,
   KmUserDetailsModel,
-  AtsRoleDataVisibility,
+  AtsRoleDataVisibilityModel,
+  AtsJobModel,
+  AtsJobMappingModel,
+  AtsHiringTeamModel,
 };

@@ -19,6 +19,10 @@ const KmUserDetailsModel = require('./tables/KmUserDetails.model')(
   mainDbSequelizeInstance
 );
 
+const AtsRoleDataVisibility = require('./tables/AtsMenuActivity.model')(
+  mainDbSequelizeInstance
+);
+
 module.exports = {
   mainDbSequelizeInstance,
   AtsMenuActivityModel,
@@ -26,4 +30,5 @@ module.exports = {
   KmEmployeePersonalDetailsModel,
   KmOrgDetailsModel,
   KmUserDetailsModel,
+  AtsRoleDataVisibility,
 };

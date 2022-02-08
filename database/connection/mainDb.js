@@ -5,7 +5,7 @@ const mainDb = new Sequelize(database, username, password, {
     host,
     dialect, 
     operatorsAliases: 0,
-    logging: false
+    logging: true
 });
 
 module.exports = mainDb;

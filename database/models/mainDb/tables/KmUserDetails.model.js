@@ -1,8 +1,9 @@
 const Sequelize = require('sequelize');
+const { mainDb } = require('../../../../config/tableConstant');
 
 module.exports = (sequelize) =>
   sequelize.define(
-    'km_user_details',
+    mainDb.KM_USER_DETAILS,
     {
       USER_ID: {
         type: Sequelize.INTEGER(10).UNSIGNED,
@@ -87,13 +88,13 @@ module.exports = (sequelize) =>
       },
       MOBILE_LOGIN: {
         type: Sequelize.TINYINT(4),
-        allowNull: false
+        allowNull: false,
       },
     },
     {
       timestamps: false,
       underscore: true,
-      tablename: 'km_user_details',
+      tablename: mainDb.KM_USER_DETAILS,
       freezeTableName: true,
     }
   );

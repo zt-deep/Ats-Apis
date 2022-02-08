@@ -1,8 +1,9 @@
 const Sequelize = require('sequelize');
+const { mainDb } = require('../../../../config/tableConstant');
 
 module.exports = (sequelize) =>
   sequelize.define(
-    'ats_job',
+    mainDb.ATS_JOB,
     {
       JOB_ID: {
         type: Sequelize.INTEGER(),
@@ -46,7 +47,7 @@ module.exports = (sequelize) =>
       QUALIFICATION: {
         type: Sequelize.TEXT,
       },
-      ADDITIONAL_INFORMATION: {
+      ADDITION_INFORMATION: {
         type: Sequelize.TEXT,
       },
       VIDEO_LINK: {
@@ -128,7 +129,7 @@ module.exports = (sequelize) =>
       createdAt: 'CREATED_ON',
       updatedAt: 'UPDATED_ON',
       underscore: true,
-      tablename: 'ats_job',
+      tablename: mainDb.ATS_JOB,
       freezeTableName: true,
     }
   );

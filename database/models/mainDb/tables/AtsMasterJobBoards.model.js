@@ -3,44 +3,45 @@ const { mainDb } = require('../../../../config/tableConstant');
 
 module.exports = (sequelize) =>
   sequelize.define(
-    mainDb.ATS_ROLE_DATA_VISIBILITY,
+    mainDb.ATS_MASTER_JOB_BOARDS,
     {
       ID: {
-        type: Sequelize.INTEGER(),
+        type: Sequelize.INTEGER().UNSIGNED,
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
       },
-      ORG_ID: {
-        type: Sequelize.INTEGER(),
+      JB_NAME: {
+        type: Sequelize.STRING(20),
         allowNull: false,
       },
-      ROLE_ID: {
-        type: Sequelize.INTEGER(),
+      JB_DESC: {
+        type: Sequelize.STRING(250),
+      },
+      JB_CONFIG: {
+        type: Sequelize.TEXT,
+      },
+      ICON_URL: {
+        type: Sequelize.STRING(250),
         allowNull: false,
       },
-      // 1-JOB, 2-CANDIDATE
-      MENU_ID: {
-        type: Sequelize.INTEGER(),
-        allowNull: false,
-      },
-      // 1-SELF, 2-ALL
-      VISIBILITY: {
+      // 0 - Free Plan, 1 - Paid
+      PLAN: {
         type: Sequelize.TINYINT(),
+        defaultValue: 0,
+        allowNull: false,
       },
-      // 1-SELF, 2-ALL
-      ACTIVITY: {
+      // 1 - Active, 0 - Inactive
+      JB_STATUS: {
         type: Sequelize.TINYINT(),
-      },
-      STATUS: {
-        type: Sequelize.INTEGER(),
+        defaultValue: 1,
         allowNull: false,
       },
     },
     {
       timestamps: false,
       underscore: true,
-      tablename: mainDb.ATS_ROLE_DATA_VISIBILITY,
+      tablename: mainDb.ATS_MASTER_JOB_BOARDS,
       freezeTableName: true,
     }
   );

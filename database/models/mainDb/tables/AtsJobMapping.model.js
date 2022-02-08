@@ -1,8 +1,9 @@
 const Sequelize = require('sequelize');
+const { mainDb } = require('../../../../config/tableConstant');
 
 module.exports = (sequelize) =>
   sequelize.define(
-    'ats_job_mapping',
+    mainDb.ATS_JOB_MAPPING,
     {
       ID: {
         type: Sequelize.INTEGER(),
@@ -100,7 +101,7 @@ module.exports = (sequelize) =>
       createdAt: 'CREATED_AT',
       updatedAt: 'UPDATED_AT',
       underscore: true,
-      tablename: 'ats_job_mapping',
+      tablename: mainDb.ATS_JOB_MAPPING,
       freezeTableName: true,
     }
   );

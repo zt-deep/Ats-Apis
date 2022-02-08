@@ -1,8 +1,9 @@
 const Sequelize = require('sequelize');
+const { mainDb } = require('../../../../config/tableConstant');
 
 module.exports = (sequelize) =>
   sequelize.define(
-    'km_org_details',
+    mainDb.KM_ORG_DETAILS,
     {
       ORG_ID: {
         type: Sequelize.INTEGER(10).UNSIGNED,
@@ -168,7 +169,7 @@ module.exports = (sequelize) =>
     {
       timestamps: false,
       underscore: true,
-      tablename: 'km_org_details',
+      tablename: mainDb.KM_ORG_DETAILS,
       freezeTableName: true,
     }
   );

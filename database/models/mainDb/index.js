@@ -35,6 +35,15 @@ const AtsHiringTeamModel = require('./tables/AtsHiringTeam.model')(
   mainDbSequelizeInstance
 );
 
+const AtsMasterJobBoardsModel = require('./tables/AtsMasterJobBoards.model')(
+  mainDbSequelizeInstance
+);
+
+const AtsJobBoardsModel = require('./tables/AtsJobBoards.model')(
+  mainDbSequelizeInstance
+);
+
+
 module.exports = {
   mainDbSequelizeInstance,
   AtsMenuActivityModel,
@@ -46,4 +55,6 @@ module.exports = {
   AtsJobModel,
   AtsJobMappingModel,
   AtsHiringTeamModel,
+  AtsMasterJobBoardsModel,
+  AtsJobBoardsModel,
 };

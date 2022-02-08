@@ -1,8 +1,9 @@
 const Sequelize = require('sequelize');
+const { mainDb } = require('../../../../config/tableConstant');
 
 module.exports = (sequelize) =>
   sequelize.define(
-    'ats_menu_activity',
+    mainDb.ATS_MENU_ACTIVITY,
     {
       ID: {
         type: Sequelize.INTEGER(),
@@ -31,7 +32,7 @@ module.exports = (sequelize) =>
     {
       timestamps: false,
       underscore: true,
-      tablename: 'ats_menu_activity',
+      tablename: mainDb.ATS_MENU_ACTIVITY,
       freezeTableName: true,
     }
   );

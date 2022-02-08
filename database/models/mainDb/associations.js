@@ -5,7 +5,9 @@ const {
     KmOrgDetailsModel,
     AtsJobModel,
     AtsJobMappingModel,
-    AtsHiringTeamModel
+    AtsHiringTeamModel,
+    AtsMasterJobBoardsModel,
+    AtsJobBoardsModel
 } = require('./index');
 
 KmEmployeeDetailsModel.hasOne(KmEmployeePersonalDetailsModel, {
@@ -57,6 +59,19 @@ AtsJobModel.hasMany(AtsHiringTeamModel, {
   foreignKey: {
     name: 'JOB_ID',
   },
+});
+
+// One to many
+AtsMasterJobBoardsModel.hasMany(AtsJobBoardsModel, {
+  foreignKey: {
+    name: 'JOB_BOARD_ID',
+  },
+});
+
+// Many To One
+AtsMasterJobBoardsModel.belongsTo(AtsJobBoardsModel, {
+  foreignKey: 'ID',
+  targetKey: 'JOB_BOARD_ID',
 });
 
 

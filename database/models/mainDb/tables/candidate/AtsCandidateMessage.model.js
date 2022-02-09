@@ -3,7 +3,7 @@ const { mainDb } = require('../../../../../config/tableConstant');
 
 module.exports = (sequelize) =>
   sequelize.define(
-    mainDb.ATS_CANDIDATE_JOB_REJECTION,
+    mainDb.ATS_CANDIDATE_MESSAGE,
     {
       ID: {
         type: Sequelize.INTEGER(11),
@@ -36,14 +36,20 @@ module.exports = (sequelize) =>
       ATTACHED_FILE: {
         type: Sequelize.STRING(255),
       },
-      REJECTION_REASON: {
-        type: Sequelize.INTEGER(10).UNSIGNED,
-      },
       CREATED_ON: {
         type: Sequelize.DATE,
       },
       CREATED_BY: {
         type: Sequelize.INTEGER(10).UNSIGNED,
+      },
+      /**
+       *  1 - For generic
+       *  2 - For Reject
+       *  3 - Offer
+       *  4 - Interview
+       */
+      MAIL_TYPE: {
+        type: Sequelize.TINYINT(2),
       },
       /**
        *  1 - Yes
@@ -57,7 +63,7 @@ module.exports = (sequelize) =>
       createdAt: 'CREATED_ON',
       updatedAt: false,
       underscore: true,
-      tablename: mainDb.ATS_CANDIDATE_JOB_REJECTION,
+      tablename: mainDb.ATS_CANDIDATE_MESSAGE,
       freezeTableName: true,
     }
   );

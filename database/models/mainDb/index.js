@@ -81,6 +81,48 @@ const AtsCandidateRawDataModel =
     mainDbSequelizeInstance
   );
 
+const AtsCandidateMessageModel =
+  require('./tables/candidate/AtsCandidateMessage.model')(
+    mainDbSequelizeInstance
+  );
+
+const AtsCandidateNotesModel =
+  require('./tables/candidate/AtsCandidateNotes.model')(
+    mainDbSequelizeInstance
+  );
+
+const AtsCandidateProcessModel =
+  require('./tables/candidate/AtsCandidateProcess.model')(
+    mainDbSequelizeInstance
+  );
+
+const AtsCandidateRejectionTypeModel =
+  require('./tables/candidate/AtsCandidateRejectionType.model')(
+    mainDbSequelizeInstance
+  );
+
+const AtsCandidateReviewModel =
+  require('./tables/candidate/AtsCandidateReview.model')(
+    mainDbSequelizeInstance
+  );
+
+const AtsCandidateReviewCardModel =
+  require('./tables/candidate/AtsCandidateReviewCard.model')(
+    mainDbSequelizeInstance
+  );
+
+const AtsCandidateStatusModel =
+  require('./tables/candidate/AtsCandidateStatus.model')(
+    mainDbSequelizeInstance
+  );
+
+const AtsCandidateTagsModel =
+  require('./tables/candidate/AtsCandidateTags.model')(
+    mainDbSequelizeInstance
+  );
+
+const AtsJobCandidateAnswersModel =
+  require('./tables/candidate/AtsJobCandidateAnswers.model')(mainDbSequelizeInstance);
 
 
 module.exports = {
@@ -103,5 +145,14 @@ module.exports = {
   AtsCandidateFolderModel,
   AtsCandidateHistoryModel,
   AtsCandidateJobRejectionModel,
-  AtsCandidateRawDataModel
+  AtsCandidateRawDataModel,
+  AtsCandidateMessageModel,
+  AtsCandidateNotesModel,
+  AtsCandidateProcessModel,
+  AtsCandidateRejectionTypeModel,
+  AtsCandidateReviewModel,
+  AtsCandidateReviewCardModel,
+  AtsCandidateStatusModel,
+  AtsCandidateTagsModel,
+  AtsJobCandidateAnswersModel,
 };

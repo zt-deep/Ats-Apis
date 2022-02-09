@@ -17,7 +17,16 @@ const mainDb = {
   ATS_CANDIDATE_FOLDER: 'ats_candidate_folder',
   ATS_CANDIDATE_FOLDER_MAPPING: 'ats_candidate_folder_mapping',
   ATS_CANDIDATE_HISTORY: 'ats_candidate_history',
-  ATS_CANDIDATE_JOB_REJECTION: 'ats_candidate_job_rejection'
+  ATS_CANDIDATE_JOB_REJECTION: 'ats_candidate_job_rejection',
+  ATS_CANDIDATE_MESSAGE: 'ats_candidate_message',
+  ATS_CANDIDATE_NOTES: 'ats_candidate_notes',
+  ATS_CANDIDATE_PROCESS: 'ats_candidate_process',
+  ATS_CANDIDATE_REJECTION_TYPE: 'ats_candidate_rejection_type',
+  ATS_CANDIDATE_REVIEW: 'ats_candidate_review',
+  ATS_CANDIDATE_REVIEW_CARD: 'ats_candidate_review_card',
+  ATS_CANDIDATE_STATUS: 'ats_candidate_status',
+  ATS_CANDIDATE_TAGS: 'ats_candidate_tags',
+  ATS_JOB_CANDIDATE_ANSWERS: 'ats_job_candidate_answers'
 };
 
 const serverLogs = {

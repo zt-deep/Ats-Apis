@@ -90,6 +90,12 @@ module.exports = (sequelize) =>
         type: Sequelize.TINYINT(4),
         allowNull: false,
       },
+      FULL_NAME: {
+        type: Sequelize.VIRTUAL(Sequelize.STRING, ['FIRST_NAME', 'LAST_NAME']),
+        get() {
+          return `${this.FIRST_NAME ? this.FIRST_NAME : ''} ${this.LAST_NAME ? this.LAST_NAME : ''}`;
+        },
+      },
     },
     {
       timestamps: false,

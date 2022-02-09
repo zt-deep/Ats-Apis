@@ -43,6 +43,45 @@ const AtsJobBoardsModel = require('./tables/AtsJobBoards.model')(
   mainDbSequelizeInstance
 );
 
+const AtsCandidateAttachmentModel = require('./tables/candidate/AtsCandidateAttachment.model')(
+  mainDbSequelizeInstance
+);
+
+const AtsCandidateDetailsModel = require('./tables/candidate/AtsCandidateDetails.model')(
+    mainDbSequelizeInstance
+  );
+
+const AtsCandidateEducationModel =
+  require('./tables/candidate/AtsCandidateEducation.model')(
+    mainDbSequelizeInstance
+  );
+
+const AtsCandidateFolderModel =
+  require('./tables/candidate/AtsCandidateFolder.model')(
+    mainDbSequelizeInstance
+  );
+
+const AtsCandidateFolderMappingModel =
+  require('./tables/candidate/AtsCandidateFolderMapping.model')(
+    mainDbSequelizeInstance
+  );
+
+const AtsCandidateHistoryModel =
+  require('./tables/candidate/AtsCandidateHistory.model')(
+    mainDbSequelizeInstance
+  );
+
+const AtsCandidateJobRejectionModel =
+  require('./tables/candidate/AtsCandidateJobRejection.model')(
+    mainDbSequelizeInstance
+  );
+
+const AtsCandidateRawDataModel =
+  require('./tables/candidate/AtsCandidateRawData.model')(
+    mainDbSequelizeInstance
+  );
+
+
 
 module.exports = {
   mainDbSequelizeInstance,
@@ -57,4 +96,12 @@ module.exports = {
   AtsHiringTeamModel,
   AtsMasterJobBoardsModel,
   AtsJobBoardsModel,
+  AtsCandidateAttachmentModel,
+  AtsCandidateDetailsModel,
+  AtsCandidateEducationModel,
+  AtsCandidateFolderMappingModel,
+  AtsCandidateFolderModel,
+  AtsCandidateHistoryModel,
+  AtsCandidateJobRejectionModel,
+  AtsCandidateRawDataModel
 };

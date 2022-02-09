@@ -9,7 +9,19 @@ const mainDb = {
   ATS_MASTER_JOB_BOARDS: 'ats_master_job_boards',
   ATS_JOB: 'ats_job',
   ATS_JOB_MAPPING: 'ats_job_mapping',
-  ATS_JOB_BOARDS: 'ats_job_boards'
+  ATS_JOB_BOARDS: 'ats_job_boards',
+  ATS_CANDIDATE_DETAILS: 'ats_candidate_details',
+  ATS_CANDIDATE_RAWDATA: 'ats_candidaate_rawdata',
+  ATS_CANDIDATE_ATTACHMENT: 'ats_candidate_attachmnet',
+  ATS_CANDIDATE_EDUCATION: 'ats_candidate_education',
+  ATS_CANDIDATE_FOLDER: 'ats_candidate_folder',
+  ATS_CANDIDATE_FOLDER_MAPPING: 'ats_candidate_folder_mapping',
+  ATS_CANDIDATE_HISTORY: 'ats_candidate_history',
+  ATS_CANDIDATE_JOB_REJECTION: 'ats_candidate_job_rejection'
 };
 
-module.exports = { mainDb }
+const serverLogs = {
+  SESSIONS: 'sessions',
+};
+
+module.exports = { mainDb, serverLogs }

@@ -1,8 +1,9 @@
 const Sequelize = require('sequelize');
+const { serverLogs } = require('../../../../config/tableConstant');
 
 module.exports = (sequelize) =>
   sequelize.define(
-    'sessions',
+    serverLogs.SESSIONS,
     {
       id: {
         type: Sequelize.STRING(501),
@@ -43,7 +44,7 @@ module.exports = (sequelize) =>
       createdAt: 'updated_on',
       updatedAt: 'auth_updated_at',
       underscore: true,
-      tablename: 'sessions',
+      tablename: serverLogs.SESSIONS,
       freezeTableName: true,
     }
   );

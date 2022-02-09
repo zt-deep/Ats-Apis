@@ -69,9 +69,21 @@ AtsMasterJobBoardsModel.hasMany(AtsJobBoardsModel, {
 });
 
 // Many To One
-AtsMasterJobBoardsModel.belongsTo(AtsJobBoardsModel, {
-  foreignKey: 'ID',
-  targetKey: 'JOB_BOARD_ID',
+AtsJobBoardsModel.belongsTo(AtsMasterJobBoardsModel, {
+  foreignKey: 'JOB_BOARD_ID',
+  targetKey: 'ID',
+});
+
+// One To Many
+AtsJobModel.belongsTo(KmUserDetailsModel, {
+  foreignKey: 'CREATED_BY',
+  targetKey: 'USER_ID',
+});
+
+KmUserDetailsModel.hasMany(AtsJobModel, {
+  foreignKey: {
+    name: 'CREATED_BY',
+  },
 });
 
 

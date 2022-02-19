@@ -1,21 +1,21 @@
 const mainDbSequelizeInstance = require('../../connection/mainDb');
 
-/**
- * Syncing MAIN database tables with sequelize
- */
 const AtsMenuActivityModel = require('./tables/AtsMenuActivity.model')(
   mainDbSequelizeInstance
 );
-const KmEmployeeDetailsModel = require('./tables/KmEmployeeDetails.model')(
-    mainDbSequelizeInstance
-);
-const KmEmployeePersonalDetailsModel = require('./tables/KmEmployeePersonalDetails.model')(
-    mainDbSequelizeInstance
-);
-const KmOrgDetailsModel = require('./tables/KmOrgDetails.model')(
+
+const KmEmployeeDetailsModel = require('./tables/kmModels/KmEmployeeDetails.model')(
   mainDbSequelizeInstance
 );
-const KmUserDetailsModel = require('./tables/KmUserDetails.model')(
+
+const KmEmployeePersonalDetailsModel =
+  require('./tables/kmModels/KmEmployeePersonalDetails.model')(mainDbSequelizeInstance);
+
+const KmOrgDetailsModel = require('./tables/kmModels/KmOrgDetails.model')(
+  mainDbSequelizeInstance
+);
+
+const KmUserDetailsModel = require('./tables/kmModels/KmUserDetails.model')(
   mainDbSequelizeInstance
 );
 
@@ -23,31 +23,31 @@ const AtsRoleDataVisibilityModel = require('./tables/AtsMenuActivity.model')(
   mainDbSequelizeInstance
 );
 
-const AtsJobModel = require('./tables/AtsJob.model')(
+const AtsJobModel = require('./tables/jobs/AtsJob.model')(mainDbSequelizeInstance);
+
+const AtsJobMappingModel = require('./tables/jobs/AtsJobMapping.model')(
   mainDbSequelizeInstance
 );
 
-const AtsJobMappingModel = require('./tables/AtsJobMapping.model')(
+const AtsHiringTeamModel = require('./tables/hiring/AtsHiringTeam.model')(
   mainDbSequelizeInstance
 );
 
-const AtsHiringTeamModel = require('./tables/AtsHiringTeam.model')(
+const AtsMasterJobBoardsModel = require('./tables/jobs/AtsMasterJobBoards.model')(
   mainDbSequelizeInstance
 );
 
-const AtsMasterJobBoardsModel = require('./tables/AtsMasterJobBoards.model')(
+const AtsJobBoardsModel = require('./tables/jobs/AtsJobBoards.model')(
   mainDbSequelizeInstance
 );
 
-const AtsJobBoardsModel = require('./tables/AtsJobBoards.model')(
-  mainDbSequelizeInstance
-);
+const AtsCandidateAttachmentModel =
+  require('./tables/candidate/AtsCandidateAttachment.model')(
+    mainDbSequelizeInstance
+  );
 
-const AtsCandidateAttachmentModel = require('./tables/candidate/AtsCandidateAttachment.model')(
-  mainDbSequelizeInstance
-);
-
-const AtsCandidateDetailsModel = require('./tables/candidate/AtsCandidateDetails.model')(
+const AtsCandidateDetailsModel =
+  require('./tables/candidate/AtsCandidateDetails.model')(
     mainDbSequelizeInstance
   );
 
@@ -117,13 +117,37 @@ const AtsCandidateStatusModel =
   );
 
 const AtsCandidateTagsModel =
-  require('./tables/candidate/AtsCandidateTags.model')(
+  require('./tables/candidate/AtsCandidateTags.model')(mainDbSequelizeInstance);
+
+const AtsJobCandidateAnswersModel =
+  require('./tables/candidate/AtsJobCandidateAnswers.model')(
     mainDbSequelizeInstance
   );
 
-const AtsJobCandidateAnswersModel =
-  require('./tables/candidate/AtsJobCandidateAnswers.model')(mainDbSequelizeInstance);
+const KmOrgSourceHigherModel =
+  require('./tables/kmModels/KmOrgSourceHigher.model')(
+    mainDbSequelizeInstance
+  );
 
+const AtsHiringProcessModel = require('./tables/hiring/AtsHiringProcess.model')(
+  mainDbSequelizeInstance
+);
+
+const AtsHiringWorkflowModel =
+  require('./tables/hiring/AtsHiringWorkflow.model')(mainDbSequelizeInstance);
+
+const AtsHiringWorkflowStatusModel =
+  require('./tables/hiring/AtsHiringWorkflowStatus.model')(
+    mainDbSequelizeInstance
+  );
+
+const AtsMasterHiringActivityModel =
+  require('./tables/hiring/AtsMasterHiringActivity.model')(
+    mainDbSequelizeInstance
+  );
+
+const AtsMasterHiringTypeModel =
+  require('./tables/hiring/AtsMasterHiringType.model')(mainDbSequelizeInstance);
 
 module.exports = {
   mainDbSequelizeInstance,
@@ -155,4 +179,10 @@ module.exports = {
   AtsCandidateStatusModel,
   AtsCandidateTagsModel,
   AtsJobCandidateAnswersModel,
+  KmOrgSourceHigherModel,
+  AtsHiringProcessModel,
+  AtsHiringWorkflowModel,
+  AtsHiringWorkflowStatusModel,
+  AtsMasterHiringActivityModel,
+  AtsMasterHiringTypeModel,
 };

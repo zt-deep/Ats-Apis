@@ -3,9 +3,9 @@ const { mainDb } = require('../../../../../config/tableConstant');
 
 module.exports = (sequelize) =>
   sequelize.define(
-    mainDb.ATS_CANDIDATE_TAGS,
+    mainDb.ATS_MASTER_HIRING_TYPE,
     {
-      TAG_ID: {
+      ID: {
         type: Sequelize.INTEGER(11),
         allowNull: false,
         autoIncrement: true,
@@ -14,29 +14,31 @@ module.exports = (sequelize) =>
       ORG_ID: {
         type: Sequelize.INTEGER(11),
       },
-      TAG_NAME: {
-        type: Sequelize.STRING(255),
-        allowNull: false,
+      NAME: {
+        type: Sequelize.STRING(200),
+        allowNull: false
       },
-      CANDIDATE_ID: {
-        type: Sequelize.INTEGER(11),
-        allowNull: false,
-      },
+      /**
+       *  1 - Deleted
+       *  0 - Active
+       */
       DELETE_STATUS: {
-        type: Sequelize.TINYINT(4),
+        type: Sequelize.TINYINT(2),
+        allowNull: false,
+        defaultValue: 1,
       },
       CREATED_BY: {
-        type: Sequelize.INTEGER(11),
+        type: Sequelize.INTEGER(11).UNSIGNED,
       },
-      CREATED_AT: {
+      CREATED_ON: {
         type: Sequelize.DATE,
       },
     },
     {
-      createdAt: 'CREATED_AT',
+      createdAt: 'CREATED_DATE',
       updatedAt: false,
       underscore: true,
-      tablename: mainDb.ATS_CANDIDATE_TAGS,
+      tablename: mainDb.ATS_MASTER_HIRING_TYPE,
       freezeTableName: true,
     }
   );

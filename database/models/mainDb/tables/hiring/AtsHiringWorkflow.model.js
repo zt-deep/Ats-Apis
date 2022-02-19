@@ -3,9 +3,9 @@ const { mainDb } = require('../../../../../config/tableConstant');
 
 module.exports = (sequelize) =>
   sequelize.define(
-    mainDb.ATS_CANDIDATE_TAGS,
+    mainDb.ATS_HIRING_WORKFLOW,
     {
-      TAG_ID: {
+      ID: {
         type: Sequelize.INTEGER(11),
         allowNull: false,
         autoIncrement: true,
@@ -13,30 +13,46 @@ module.exports = (sequelize) =>
       },
       ORG_ID: {
         type: Sequelize.INTEGER(11),
-      },
-      TAG_NAME: {
-        type: Sequelize.STRING(255),
         allowNull: false,
       },
-      CANDIDATE_ID: {
+      JOB_ID: {
         type: Sequelize.INTEGER(11),
         allowNull: false,
       },
+      HIRING_TYPE_ID: {
+        type: Sequelize.INTEGER(11),
+        allowNull: false,
+      },
+      HIRING_PROCESS_ID: {
+        type: Sequelize.INTEGER(11),
+      },
+      PROCESS_NAME: {
+        type: Sequelize.STRING(200),
+      },
+      PROCESS_ACTIVITY: {
+        type: Sequelize.INTEGER(11),
+      },
+      /**
+       *  1 - Active
+       *  0 - Inactive
+       */
       DELETE_STATUS: {
-        type: Sequelize.TINYINT(4),
+        type: Sequelize.TINYINT(2),
+        allowNull: false,
+        defaultValue: 1
       },
       CREATED_BY: {
         type: Sequelize.INTEGER(11),
       },
-      CREATED_AT: {
+      CREATED_DATE: {
         type: Sequelize.DATE,
       },
     },
     {
-      createdAt: 'CREATED_AT',
+      createdAt: 'CREATED_DATE',
       updatedAt: false,
       underscore: true,
-      tablename: mainDb.ATS_CANDIDATE_TAGS,
+      tablename: mainDb.ATS_HIRING_WORKFLOW,
       freezeTableName: true,
     }
   );

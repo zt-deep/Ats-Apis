@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const { mainDb } = require('../../../../config/tableConstant');
+const { mainDb } = require('../../../../../config/tableConstant');
 
 module.exports = (sequelize) =>
   sequelize.define(

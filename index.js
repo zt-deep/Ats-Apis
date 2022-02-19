@@ -1,6 +1,7 @@
 const FILE_NAME = 'Index.js';
 const bodyParser = require('body-parser');
 const compression = require('compression');
+const cors = require('cors');
 require('dotenv').config();
 const express = require('express');
 const logger = require('./logger/index')(FILE_NAME);
@@ -12,6 +13,7 @@ require('./database/index');
 
 
 const app = express();
+app.use(cors());
 app.use(compression());
 app.use(bodyParser.json());
 
@@ -25,6 +27,8 @@ app.get('/', async (req, res) => {
       });
 })
 app.use(errorResponse);
+
+process.on('warning', (e) => console.warn(e.stack));
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
     logger.info(`Zimyo ATS is live on port ${PORT}`);

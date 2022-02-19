@@ -26,7 +26,14 @@ const mainDb = {
   ATS_CANDIDATE_REVIEW_CARD: 'ats_candidate_review_card',
   ATS_CANDIDATE_STATUS: 'ats_candidate_status',
   ATS_CANDIDATE_TAGS: 'ats_candidate_tags',
-  ATS_JOB_CANDIDATE_ANSWERS: 'ats_job_candidate_answers'
+  ATS_JOB_CANDIDATE_ANSWERS: 'ats_job_candidate_answers',
+  KM_ORG_SOURCE_HIGHER:'km_org_source_higher',
+  ATS_HIRING_PROCESS: 'ats_hiring_process',
+  ATS_HIRING_WORKFLOW: 'ats_hiring_workflow',
+  ATS_HIRING_WORKFLOW_STATUS: 'ats_hiring_workflow_status',
+  ATS_MASTER_HIRING_ACTIVITY: 'ats_master_hiring_activity',
+  ATS_MASTER_HIRING_TYPE: 'ats_master_hiring_type',
+  ATS_JOB_HIRING_ROLE: 'ats_job_hiring_role'
 };
 
 const serverLogs = {

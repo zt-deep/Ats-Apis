@@ -3,9 +3,9 @@ const { mainDb } = require('../../../../../config/tableConstant');
 
 module.exports = (sequelize) =>
   sequelize.define(
-    mainDb.ATS_CANDIDATE_TAGS,
+    mainDb.KM_ORG_SOURCE_HIGHER,
     {
-      TAG_ID: {
+      HIGHERID: {
         type: Sequelize.INTEGER(11),
         allowNull: false,
         autoIncrement: true,
@@ -14,26 +14,30 @@ module.exports = (sequelize) =>
       ORG_ID: {
         type: Sequelize.INTEGER(11),
       },
-      TAG_NAME: {
+      HIGHER_NAME: {
         type: Sequelize.STRING(255),
         allowNull: false,
-      },
-      CANDIDATE_ID: {
-        type: Sequelize.INTEGER(11),
-        allowNull: false,
-      },
-      DELETE_STATUS: {
-        type: Sequelize.TINYINT(4),
       },
       CREATED_BY: {
         type: Sequelize.INTEGER(11),
       },
-      CREATED_AT: {
+      CREATED_ON: {
         type: Sequelize.DATE,
+      },
+      /**
+       *  0 - Active
+       *  1 - Pending
+       */
+      HIGHER_STATUS: {
+        type: Sequelize.INTEGER,
+      },
+      DELETE_STATUS: {
+        type: Sequelize.TINYINT,
+        defaultValue: 0
       },
     },
     {
-      createdAt: 'CREATED_AT',
+      createdAt: 'CREATED_ON',
       updatedAt: false,
       underscore: true,
       tablename: mainDb.ATS_CANDIDATE_TAGS,

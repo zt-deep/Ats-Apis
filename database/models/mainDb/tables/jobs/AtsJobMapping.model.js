@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const { mainDb } = require('../../../../config/tableConstant');
+const { mainDb } = require('../../../../../config/tableConstant');
 
 module.exports = (sequelize) =>
   sequelize.define(
@@ -61,19 +61,22 @@ module.exports = (sequelize) =>
       REMARK: {
         type: Sequelize.STRING(200),
       },
-      SALARY_STRUCTURE: {
+      SALARY_STRACTURE: {
         type: Sequelize.INTEGER,
       },
       STEP: {
         type: Sequelize.INTEGER,
+        defaultValue: 0,
       },
       STEP_STATUS: {
         type: Sequelize.INTEGER,
         allowNull: false,
+        defaultValue: 0,
       },
       SEND_LINK_STATUS: {
         type: Sequelize.TINYINT,
         allowNull: false,
+        defaultValue: 0,
       },
       SENSELOAF_SCORE: {
         type: Sequelize.FLOAT().UNSIGNED,

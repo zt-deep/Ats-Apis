@@ -95,6 +95,7 @@ module.exports = (sequelize) =>
     },
     {
       createdAt: 'CREATED_ON',
+      updatedAt: false,
       underscore: true,
       tablename: mainDb.ATS_CANDIDATE_DETAILS,
       freezeTableName: true,

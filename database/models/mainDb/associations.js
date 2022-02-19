@@ -7,7 +7,9 @@ const {
     AtsJobMappingModel,
     AtsHiringTeamModel,
     AtsMasterJobBoardsModel,
-    AtsJobBoardsModel
+    AtsJobBoardsModel,
+    AtsCandidateDetailsModel,
+    KmOrgSourceHigherModel,
 } = require('./index');
 
 KmEmployeeDetailsModel.hasOne(KmEmployeePersonalDetailsModel, {
@@ -83,6 +85,28 @@ AtsJobModel.belongsTo(KmUserDetailsModel, {
 KmUserDetailsModel.hasMany(AtsJobModel, {
   foreignKey: {
     name: 'CREATED_BY',
+  },
+});
+
+AtsCandidateDetailsModel.hasMany(AtsJobMappingModel, {
+  foreignKey: {
+    name: 'CANDIDATE_ID',
+  },
+});
+
+AtsJobMappingModel.belongsTo(AtsCandidateDetailsModel, {
+  foreignKey: 'CANDIDATE_ID',
+  targetKey: 'ID',
+});
+
+AtsCandidateDetailsModel.belongsTo(KmOrgSourceHigherModel, {
+  foreignKey: 'SOURCE_TYPE',
+  targetKey: 'HIGHERID',
+});
+
+KmOrgSourceHigherModel.hasMany(AtsCandidateDetailsModel, {
+  foreignKey: {
+    name: 'SOURCE_TYPE',
   },
 });
 

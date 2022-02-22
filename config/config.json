@@ -24,10 +24,10 @@
   },
   "test": {
     "mainDb" : {
-      "username": "root",
-      "password": null,
-      "database": "database_development",
-      "host": "127.0.0.1",
+      "username": "usr_app_57",
+      "password": "@pP#20lB!23",
+      "database": "demo_db_server",
+      "host": "13.235.174.11",
       "dialect": "mysql"
     },
     "accounts" : {

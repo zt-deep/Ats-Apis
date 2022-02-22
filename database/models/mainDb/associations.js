@@ -1,15 +1,16 @@
-const { 
-    KmEmployeeDetailsModel, 
-    KmEmployeePersonalDetailsModel, 
-    KmUserDetailsModel,
-    KmOrgDetailsModel,
-    AtsJobModel,
-    AtsJobMappingModel,
-    AtsHiringTeamModel,
-    AtsMasterJobBoardsModel,
-    AtsJobBoardsModel,
-    AtsCandidateDetailsModel,
-    KmOrgSourceHigherModel,
+const {
+  KmEmployeeDetailsModel,
+  KmEmployeePersonalDetailsModel,
+  KmUserDetailsModel,
+  KmOrgDetailsModel,
+  AtsJobModel,
+  AtsJobMappingModel,
+  AtsHiringTeamModel,
+  AtsMasterJobBoardsModel,
+  AtsJobBoardsModel,
+  AtsCandidateDetailsModel,
+  KmOrgSourceHigherModel,
+  AtsHiringWorkflowModel,
 } = require('./index');
 
 KmEmployeeDetailsModel.hasOne(KmEmployeePersonalDetailsModel, {
@@ -109,5 +110,24 @@ KmOrgSourceHigherModel.hasMany(AtsCandidateDetailsModel, {
     name: 'SOURCE_TYPE',
   },
 });
+
+KmOrgSourceHigherModel.hasMany(AtsJobMappingModel, {
+  foreignKey: {
+    name: 'SOURCE',
+  },
+});
+
+AtsJobMappingModel.belongsTo(KmOrgSourceHigherModel, {
+  foreignKey: 'SOURCE',
+  targetKey: 'HIGHERID',
+});
+
+AtsJobMappingModel.hasOne(AtsHiringWorkflowModel, {
+  foreignKey: {
+    name: 'STEP',
+    allowNull: false,
+  },
+});
+
 
 

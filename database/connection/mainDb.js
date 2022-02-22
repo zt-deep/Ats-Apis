@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const { database, dialect, host, password, username } = require('../../config/config.json').development.mainDb;
+const { database, dialect, host, password, username } = require('../../config/config.json').test.mainDb;
 
 const mainDb = new Sequelize(database, username, password, {
     host,

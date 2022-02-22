@@ -27,6 +27,17 @@ const HttpCodes = {
 const ALPHA_NUMERIC_CHAR =
   '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmanopqrstuvwxyz@_#!:+=';
 
+const JOB_CANDIDATE_STATUS_LIST = {
+  'New': [0],
+  'In_Progress': [1,2,3],
+  'All_Active': [0,1,2,3],
+  'On_Hold': [19],
+  'Selected': [4],
+  'Rejected': [5],
+  'Withdraw': [6],
+  'Hired': [100]
+}
+
 module.exports = {
   HttpCodes,
   ZIMYO_ATS_APP_ID,
@@ -34,5 +45,6 @@ module.exports = {
   FAILURE_MESSAGE,
   ALPHA_NUMERIC_CHAR,
   ATS_ROLE_IDS,
-  ATS_ROLE_NAME
+  ATS_ROLE_NAME,
+  JOB_CANDIDATE_STATUS_LIST,
 };

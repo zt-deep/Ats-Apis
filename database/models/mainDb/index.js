@@ -149,6 +149,9 @@ const AtsMasterHiringActivityModel =
 const AtsMasterHiringTypeModel =
   require('./tables/hiring/AtsMasterHiringType.model')(mainDbSequelizeInstance);
 
+  const AtsOrgJobSettingModel =
+  require('./tables/hiring/AtsOrgJobSetting.model')(mainDbSequelizeInstance);
+
 module.exports = {
   mainDbSequelizeInstance,
   AtsMenuActivityModel,
@@ -185,4 +188,5 @@ module.exports = {
   AtsHiringWorkflowStatusModel,
   AtsMasterHiringActivityModel,
   AtsMasterHiringTypeModel,
+  AtsOrgJobSettingModel
 };

@@ -33,7 +33,8 @@ const mainDb = {
   ATS_HIRING_WORKFLOW_STATUS: 'ats_hiring_workflow_status',
   ATS_MASTER_HIRING_ACTIVITY: 'ats_master_hiring_activity',
   ATS_MASTER_HIRING_TYPE: 'ats_master_hiring_type',
-  ATS_JOB_HIRING_ROLE: 'ats_job_hiring_role'
+  ATS_JOB_HIRING_ROLE: 'ats_job_hiring_role',
+  ATS_ORG_JOB_SETTING: 'ats_org_job_setting',
 };
 
 const serverLogs = {

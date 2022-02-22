@@ -9,14 +9,14 @@
     },
     "accounts" : {
       "username": "root",
-      "password": "ABC@abc123",
+      "password": "password",
       "database": "accounts_demo",
       "host": "127.0.0.1",
       "dialect": "mysql"
     },
     "serverLogs" : {
       "username": "root",
-      "password": "ABC@abc123",
+      "password": "password",
       "database": "server_logs",
       "host": "127.0.0.1",
       "dialect": "mysql"
